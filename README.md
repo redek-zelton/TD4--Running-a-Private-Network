@@ -117,6 +117,8 @@ $cd data
 $vi static-node.json
 # launch the private node in Network folder
 $PRIVATE_CONFIG=ignore geth --datadir data --http --http.addr "127.0.0.1" --http.port 8545 --http.api eth,net,web3,personal,shh,txpool,quorum,istanbul
+# Or add --allow-insecure-unlock to unlock address
+$PRIVATE_CONFIG=ignore geth --datadir data --allow-insecure-unlock --http --http.addr "127.0.0.1" --http.port 8545 --http.api eth,net,web3,personal,shh,txpool,quorum,istanbul
 ```
 ![LQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/LQuorum.JPG)
 ```bash
