@@ -147,6 +147,9 @@ Reapeat passphrase: #PWD
 ![AQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/AQuorum.JPG)
 
 Now, We can create a Smart Contract With Truffle and Deploy it
+I Recycled an old Smart Contract. All Configuration to deploy a Smart Contract is good, the fail come from the last step about gaz fees. I don't know why we need some eth to deploy to a private network. I cannot put a huge fees and a very small fees to pass my Smart Contract. 
+![Deploy1](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/Deploy1.JPG)
+![Deploy2](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/Deploy2.JPG)
 
 
 
