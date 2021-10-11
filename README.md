@@ -49,7 +49,8 @@ $ufw status
 #Quitter
 $exit
 ```
-mettre Image ici
+![UFW](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/UFW.JPG)
+
 
 
 ## Installing Dependencies
@@ -97,7 +98,7 @@ $sudo cp geth /usr/local/bin
 # Check version
 $geth version
 ```
-mettre image ici
+![IQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/IQuorum.JPG)
 
 
 
@@ -116,7 +117,9 @@ $cd data
 $vi static-node.json
 # launch the private node in Network folder
 $PRIVATE_CONFIG=ignore geth --datadir data --http --http.addr "127.0.0.1" --http.port 8545 --http.api eth,net,web3,personal,shh,txpool,quorum,istanbul
-
+```
+![LQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/LQuorum.JPG)
+```bash
 #Other Virtual Machine
 $geth attach Network/data/geth.ipc
 # Check
@@ -124,7 +127,7 @@ $geth attach Network/data/geth.ipc
 >istanbul.nodeAddress
 >istanbul.getValidators()
 ```
-mettre image
+![CQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/CQuorum.JPG)
 
 
 
@@ -139,7 +142,7 @@ Reapeat passphrase: #PWD
 "0xa4d16a7da64d2ae330c2f973e9fe097ede05eceb" #Example
 >personal.unlockAccount("#account")
 ```
-mettre image
+![AQuorum](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/AQuorum.JPG)
 
 Now, We can create a Smart Contract With Truffle and Deploy it
 
@@ -163,7 +166,7 @@ tar xvf tessera-dist-21.7.2.tar
 $./tessera version #in bin folder
 $./tessera-21.7.2/bin/tessera help #in Tessera folder
 ```
-mettre image
+![ITessera](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/ITessera.JPG)
 
 
 
@@ -181,7 +184,18 @@ $tessera-21.7.2/bin/tessera -configfile config.json
 $curl http://localhost:9081/upcheck
 >I'm up!
 ```
-mettre image
+![KTessera](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/KTessera.JPG)
+![CTessera](https://github.com/redek-zelton/TD4--Running-a-Private-Network/blob/main/image/CTessera.JPG)
+
 
 
 ## Create a private Smart Contract with .........
+
+
+
+## Conclusion TD
+
+
+
+## Documentation
+- [GoQuorum](https://docs.goquorum.consensys.net)
