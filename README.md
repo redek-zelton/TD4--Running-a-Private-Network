@@ -1,6 +1,7 @@
 # TD4--Running-a-Private-Network
 
 ## Instruction
+Le But de ce TD est de créer et d'intéragir avec les smart contracts dans une blockchaine privée. La blockchaine privée possède les même principes qu'une blockchaine public, mais le nombre d'utilisateur est restraint, soit très peu de gens auront accès aux données. 2 méthodes de déploiement: -avec Quorum seul, et -avec Tessera.
 
 
 ## SSH Setup
@@ -104,6 +105,7 @@ $geth version
 
 ## Connect Geth to our group's private network
 Can help: [link](https://docs.goquorum.consensys.net/en/stable/Tutorials/Private-Network/Create-IBFT-Network/)
+Configuration `genesis.json`
 ```bash
 # Create a folder
 $mkdir Network
@@ -112,6 +114,9 @@ $cd Network
 $vi genesis.json #put inside
 # initialisation the genesis with the creation of new folder "data"
 $geth --datadir data init genesis.json
+```
+Configuration `static-nodes.json`
+```bash
 # put the `static-node.json` in data
 $cd data
 $vi static-node.json
@@ -134,7 +139,7 @@ $geth attach Network/data/geth.ipc
 
 
 ## Deploy a contract
-We need to create an accounts for deploying a Smart Contract in this Network
+We need to create an accounts for deploying a Smart Contract in this Network. First open a SSH Tunnel for ports: 8545 and 8546
 ```bash
 # In Network Console
 #Create account
@@ -178,6 +183,7 @@ $./tessera-21.7.2/bin/tessera help #in Tessera folder
 ## Configure Tessera
 We can follow this: [Tessera Configuration](https://docs.tessera.consensys.net/en/latest/HowTo/Get-started/Start-Tessera/)
 
+Generate Keys and Create `Config.json`
 ```bash
 # Generate Keys
 $~/Tessera/tessera-21.7.2/bin/tessera -keygen -filename myKey
@@ -195,7 +201,9 @@ $curl http://localhost:9081/upcheck
 
 
 ## Create a private Smart Contract with .........
-
+We can start to deploy the same contract than before, but we use now the tessera way.
+* first we create a SSH Tunnel for the port 9081 (use Tessera)
+* and we can deploy in this port:  9081
 
 
 ## Conclusion TD
