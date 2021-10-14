@@ -58,7 +58,7 @@ $exit
 Go can be installed, but it is optionnal for us.
 Java is needed for use Tessera.
 
-### Install Go
+### Install Go (Optional, not use for this time)
 [Install Go](https://github.com/golang/go/wiki/Ubuntu?fbclid=IwAR2QP1jmv8EnGd_JLlDqUEZulwRWsmf9y-tyN4j49ECUEYiM7jj8QF9IyTw)
 ```bash
 $sudo add-apt-repository ppa:longsleep/golang-backports
@@ -203,18 +203,35 @@ $curl http://localhost:9081/upcheck
 ## Create a private Smart Contract with .........
 Follow this link to extend: [Contract extension](https://docs.goquorum.consensys.net/en/20.10.0/Reference/APIs/ContractExtensionAPIs/)
 We can start to deploy the same contract than before, but we use now the tessera way.
+
 * first we create a SSH Tunnel for the port 9001 (use Tessera)
-* put the `PrivateFor` to allow all interaction in the private network. Only the teacher network cans work, others give a Http 405 Error "Method not Allowed"
+
+* put the `PrivateFor` to allow all interaction in the private network. But I have a Http 405 Error "Method not Allowed"
 ```bash
-$curl -X POST http://mesifi590421-0000.westeurope.cloudapp.azure.com:9001" --data '{"jsonrpc":"2.0","method":"quorumExtension_extendContract","params":["0x9aff347f193ca4560276c3322193224dcdbbe578","BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=","0xed9d02e382b34818e88b88a309c7fe71e65f419d",{"from":"0xca843569e3427144cead5e4d5999a3d0ccf92b8e","value":"0x0","privateFor":["LXPEzIq3GRMReDaKckedWHkuky52yj45yRou3YA6hkA="],"privacyFlag":1}],"id":15}' --header "Content-Type: application/json"
+$curl -X POST http://mesifi590421-0000.westeurope.cloudapp.azure.com:9001 --data '{"jsonrpc":"2.0","method":"quorumExtension_extendContract","params":["0x9aff347f193ca4560276c3322193224dcdbbe578","BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=","0xed9d02e382b34818e88b88a309c7fe71e65f419d",{"from":"0xca843569e3427144cead5e4d5999a3d0ccf92b8e","value":"0x0","privateFor":["LXPEzIq3GRMReDaKckedWHkuky52yj45yRou3YA6hkA="],"privacyFlag":1}],"id":15}' --header "Content-Type: application/json"
+# Or
+$curl -X POST http://127.0.0.1:9001 --data '{"jsonrpc":"2.0","method":"quorumExtension_extendContract","params":["0x9aff347f193ca4560276c3322193224dcdbbe578","BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=","0xed9d02e382b34818e88b88a309c7fe71e65f419d",{"from":"0xca843569e3427144cead5e4d5999a3d0ccf92b8e","value":"0x0","privateFor":["LXPEzIq3GRMReDaKckedWHkuky52yj45yRou3YA6hkA="],"privacyFlag":1}],"id":15}' --header "Content-Type: application/json"
 ```
-Now, we have a console.
 
+* and we can deploy in this port:  9001 (Cannot be deploy due to Http 405Error)
+```js
+module.exports = {
+  networks: {
+    development: {
+    host: "localhost", //our network is running on localhost
+    port: 9001, // port where your blockchain is running
+    network_id: "*",
+    type: 'quorum',
+    gas: 50000000
+    }
+  }
+  };
+```
 
-* and we can deploy in this port:  9001
 
 
 ## Conclusion TD
+Les configurations des paramètres sont guidées par la documentation de GoQuorum, cela à été facile à configurer. Mais quand on cherche à deployer un Smart Contract dans une blockchaine privée, il y a très peu d'information. Pour le premier Contrat, le deployment est refusé à cause du gaz (pas résolu). Pour le deuxième, à cause du port: les port 9081 et 9001 sont déployées (>I'm check up!), mais ne peut pas être utiliser ! 
 
 
 
